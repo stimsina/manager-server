@@ -1,0 +1,88 @@
+package com.npl.employeemanager.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+@Entity(name = "emp_user")
+@Table(name = "emp_user")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class EmpUser implements Serializable {
+
+    @Column
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "first_name")
+    @NotNull
+    private String firstName;
+
+    @Column(name = "last_name")
+    @NotNull
+    private String lastName;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "user_name",unique = true)
+    @NotNull
+    @Email
+    private String userName;
+
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isAdmin=false;
+
+    // standard setters and getters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+}
