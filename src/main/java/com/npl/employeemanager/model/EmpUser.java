@@ -36,6 +36,11 @@ public class EmpUser implements Serializable {
     @Column(columnDefinition = "boolean default false")
     private Boolean isAdmin=false;
 
+    // password not saved to this table, handled by firebase auth
+    @Column
+    @Transient
+    private String password;
+
     // standard setters and getters
 
     public Long getId() {
@@ -85,4 +90,8 @@ public class EmpUser implements Serializable {
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+
+    public void setPassword(String password) { this.password = password; }
+
+    public String getPassword() { return password;}
 }

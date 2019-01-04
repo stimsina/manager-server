@@ -26,7 +26,7 @@ public class EmailServiceImpl implements EmailService {
         Email toAddress = new Email(empUser.getUserName());
 
         Content content = new Content("text/plain", "Welcome aboard, your credentials have been created : userName = "+empUser.getUserName()+
-                " , password = "+"manager1234"+"\n\n"+"Thank You -  Employee Manager Team");
+                " , password = "+empUser.getPassword()+"\n\n"+"Thank You -  Employee Manager Team");
 
         Mail mail = new Mail(fromAddress, subject, toAddress, content);
 

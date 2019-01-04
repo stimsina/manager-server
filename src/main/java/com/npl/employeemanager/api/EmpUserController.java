@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.Collection;
 
+@CrossOrigin()
 @RestController
 public class EmpUserController {
 
@@ -35,6 +36,7 @@ public class EmpUserController {
         if(empUser.getId()!=null){
 
             try {
+                empUser.setPassword(restEmpUser.getPassword());
                 emailService.sendWelcomeEmail(empUser);
             }
             catch (MailSendException e){
