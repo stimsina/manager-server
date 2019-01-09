@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity(name = "emp_user")
 @Table(name = "emp_user")
@@ -36,6 +37,12 @@ public class EmpUser implements Serializable {
     @Column(columnDefinition = "boolean default false")
     private Boolean isAdmin=false;
 
+    @Column(columnDefinition = "boolean default true")
+    private Boolean isActive=true;
+
+    @Column(name = "last_login")
+    private LocalDateTime loginDateTime;
+
     // password not saved to this table, handled by firebase auth
     @Column
     @Transient
@@ -51,9 +58,7 @@ public class EmpUser implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public String getFirstName() { return firstName;  }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -87,9 +92,17 @@ public class EmpUser implements Serializable {
         return isAdmin;
     }
 
+    public void setActive(Boolean active) { isActive = active; }
+
+    public Boolean getActive() { return isActive;}
+
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+
+    public LocalDateTime getLoginDateTime() { return loginDateTime; }
+
+    public void setLoginDateTime(LocalDateTime loginDateTime) { this.loginDateTime = loginDateTime; }
 
     public void setPassword(String password) { this.password = password; }
 
