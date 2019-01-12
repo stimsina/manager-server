@@ -1,14 +1,15 @@
 package com.npl.employeemanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Entity(name = "vote")
+@Table(name = "vote")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Vote implements Serializable {
 
     @Column

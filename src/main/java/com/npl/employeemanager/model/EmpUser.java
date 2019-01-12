@@ -43,6 +43,9 @@ public class EmpUser implements Serializable {
     @Column(name = "last_login")
     private LocalDateTime loginDateTime;
 
+    @Column(name = "remaining_votes",columnDefinition = "int default 50")
+    private int remainingVotes=50;
+
     // password not saved to this table, handled by firebase auth
     @Column
     @Transient
@@ -107,4 +110,8 @@ public class EmpUser implements Serializable {
     public void setPassword(String password) { this.password = password; }
 
     public String getPassword() { return password;}
+
+    public void setRemainingVotes(int remainingVotes) { this.remainingVotes = remainingVotes; }
+
+    public int getRemainingVotes() { return remainingVotes; }
 }
