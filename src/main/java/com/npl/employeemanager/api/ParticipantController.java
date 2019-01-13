@@ -37,6 +37,7 @@ public class ParticipantController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Collection<Participant> getAllParticipants(){
+
         return participantService.getAllParticipants();
     }
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @Entity(name = "participant")
 @Table(name = "participant")
+@Access(AccessType.FIELD)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Participant implements Serializable {
 
